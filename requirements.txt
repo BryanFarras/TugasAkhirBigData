@@ -1,0 +1,33 @@
+# ==============================================================================
+# Big Data Final Project — Dependencies Specification
+# Project: Sistem Terpadu Pemantauan Spatio-Temporal Hotspot & Peringatan Dini Karhutla
+# ==============================================================================
+#
+# Execution Environment Notes:
+# - WSL2 (Ubuntu 22.04 LTS, Python 3.10.12, OpenJDK 17) is the primary target for
+#   distributed computing workloads (PySpark Structured Streaming, Kafka client,
+#   HBase Thrift RPC integration, and Hive metastore queries).
+# - Windows Host (Python 3.13 / 3.14) can run the FastAPI serving service, Streamlit GIS
+#   dashboard, and local data utilities.
+# ==============================================================================
+
+# Big Data Processing & Streaming Layer (Fase 1 & Fase 2)
+pyspark==4.2.0
+confluent-kafka>=2.3.0
+
+# Serving Layer — High Performance Asynchronous REST API (Fase 3)
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+
+# Presentation & GIS Visualization Layer (Fase 4)
+streamlit>=1.32.0
+folium>=0.16.0
+streamlit-folium>=0.18.0
+plotly>=5.19.0
+
+# Data Lake, Storage, & Analytical Layer (Fase 2, 3, & 5)
+pandas>=2.2.0
+pyarrow>=15.0.0
+happybase>=1.2.0
+requests>=2.31.0

@@ -1,125 +1,180 @@
-# To-Do List & Action Plan: Final Project Teknologi Big Data (Kelompok 6)
+# To-Do List & Action Plan: Final Project Teknologi Big Data
 
 **Judul Proyek:** Sistem Terpadu Pemantauan Spatio-Temporal Titik Api (_Hotspot_) dan Peringatan Dini Kebakaran Hutan & Lahan di Indonesia Menggunakan Arsitektur Big Data End-to-End  
-**Target Nilai:** Sangat Baik / Grade A (85–100 Poin)  
-**Tenggat Waktu Final:** Akhir Semester (Sesuai Jadwal EMAS3)
-
----
-
-## Ringkasan Pembagian Peran Anggota Tim
-
-- **[BRY] Muhammad Bryan Farras (2306230975)**: Lead Architect & Stream Engineer (Kafka + Spark Streaming + Bab 1 & Bab 4)
-- **[MRZ] Mirza Adi Raffiansyah (2306210323)**: Storage & Batch Engineer (HBase + Parquet + Hive + Bab 2 & Bab 3)
-- **[CLV] Calvin Wirathama Katoroy (2306242395)**: Serving & Backend Engineer (FastAPI + Docker/WSL2 + Benchmark Latensi + Bab 4)
-- **[SLM] Salim (2306204604)**: Visualization & Project Lead (Streamlit + Folium GIS + Laporan PDF + PPT + Video YouTube)
+**Target Kategori:** Sangat Baik / Grade A (85–100 Poin)  
+**Kerangka Waktu:** 7 Fase Terstruktur Menuju Pengumpulan Akhir Semester
 
 ---
 
 ## DAFTAR TUGAS PER FASE
 
-### Fase 0: Setup Repositori & Lingkungan Kerja (Target: Hari 1–3)
+---
 
-- [ ] **[CLV]** Struktur direktori proyek di `FinalProject/`:
-  - `ingestion/` (Kafka producer & data feed)
-  - `streaming/` (PySpark structured streaming)
-  - `storage/` (HBase scripts & Parquet warehouse)
-  - `serving/` (FastAPI backend)
-  - `dashboard/` (Streamlit GIS UI)
-  - `report/` (Laporan PDF, PPT, assets gambar)
-- [ ] **[CLV]** Buat berkas `docker-compose.yml` untuk orkestrasi container:
-  - Zookeeper + Apache Kafka 3.x
-  - Apache HBase 2.6.7 (dari Topic 9)
-  - Apache Hive 4.2.1 (dari Topic 10)
-- [ ] **[CLV]** Buat `requirements.txt` Python environment (pyspark, confluent-kafka, fastapi, uvicorn, streamlit, folium, streamlit-folium, plotly).
-- [ ] **[MRZ]** Siapkan dataset FIRMS VIIRS skala 100k dan 1 juta baris serta berkas referensi `ref_grid_provinsi.csv`.
+### Fase 0: Setup Repositori, Environment, & Dataset
+
+**Tujuan:** Menyiapkan fondasi sistem, struktur direktori modular, dependensi, dan kontainer terisolasi sebelum implementasi kode.
+
+- [x] **Struktur Repositori Proyek:**
+  - Buat folder modular di direktori kerja:
+    - `ingestion/` (Kafka producer & data feed)
+    - `streaming/` (PySpark structured streaming)
+    - `storage/` (HBase scripts & Parquet lake)
+    - `serving/` (FastAPI backend service)
+    - `dashboard/` (Streamlit GIS frontend)
+    - `data/` (Dataset satelit & tabel referensi)
+    - `report/` (Laporan akhir, slide presentasi, screenshots)
+- [x] **Orkestrasi Lingkungan Kontainer (`docker-compose.yml`):**
+  - Konfigurasi service **Apache Zookeeper** & **Apache Kafka 3.x**
+  - Konfigurasi service **Apache HBase 2.6.7** (port 16010 & 9090)
+  - Konfigurasi service **Apache Hive 4.2.1** (port 10000 & 10002)
+- [x] **Manajemen Dependensi Python (`requirements.txt`):**
+  - Instalasi paket: `pyspark`, `confluent-kafka`, `fastapi`, `uvicorn`, `streamlit`, `folium`, `streamlit-folium`, `plotly`, `pandas`, `pyarrow`.
+- [x] **Penyiapan & Verifikasi Dataset:**
+  - Ekstraksi dataset satelit VIIRS NASA FIRMS skala `100.000` baris dan proyeksi `1.000.000` baris.
+  - Penyiapan tabel dimensi `ref_grid_provinsi.csv` (239 sel grid 1°×1°).
+
+_Deliverable Fase 0:_ Stack Docker aktif di port masing-masing, lingkungan virtualenv Python terpasang, dan dataset siap diproses.
 
 ---
 
-### Fase 1: Ingestion Layer — Apache Kafka (Target: Hari 4–6)
+### Fase 1: Lapisan Ingestion — Apache Kafka
 
-- [ ] **[BRY]** Buat Kafka Topic `hotspot-stream` dengan konfigurasi partisi optimal (misal 3 partisi).
-- [ ] **[BRY]** Bangun skrip `ingestion/kafka_producer.py`:
-  - Membaca data titik api satelit secara streaming (simulasi delay realistis per event).
-  - Serialisasi payload JSON: `hotspot_id`, `latitude`, `longitude`, `acq_date`, `acq_time`, `confidence`, `frp`, `daynight`.
-- [ ] **[BRY]** Implementasikan mekanisme _health check_ dan pengukuran throughput pesan (events/detik).
-- [ ] **[BRY]** Ambil screenshot terminal WSL: Kafka broker berjalan, topic aktif, dan pesan terkirim.
+**Tujuan:** Membangun _message broker_ terdistribusi untuk menerima dan menampung aliran data telemetri satelit berkecepatan tinggi tanpa _loss_.
+
+- [ ] **Konfigurasi Topic Kafka:**
+  - Buat topic `hotspot-stream` dengan partisi yang memadai (minimal 3 partisi).
+  - Tentukan kebijakan retensi data (_retention policy_) dan _replication factor_.
+- [ ] **Pengembangan Simulator Feed Satelit (`ingestion/kafka_producer.py`):**
+  - Buat skrip _producer_ yang membaca dataset titik api dan memancarkannya secara streaming.
+  - Atur laju pengiriman (_ingestion rate_, misal 50–200 pesan/detik).
+  - Serialisasi format payload JSON:
+    - `hotspot_id`, `latitude`, `longitude`, `acq_date`, `acq_time`, `confidence`, `frp`, `daynight`.
+- [ ] **Verifikasi & Monitoring Ingestion:**
+  - Uji konsumsi pesan via console consumer CLI.
+  - Catat metrik throughput pengiriman (pesan/detik).
+  - Dokumentasikan screenshot terminal WSL: broker Kafka aktif, topic terbentuk, dan stream berjalan.
+
+_Deliverable Fase 1:_ Aliran data satelit mengalir stabil ke broker Kafka dan siap dikonsumsi oleh lapisan pemrosesan.
 
 ---
 
-### Fase 2: Processing Layer — Hybrid Streaming & Batch (Target: Hari 7–11)
+### Fase 2: Lapisan Processing — Hybrid Streaming & Batch
 
-#### A. Speed Layer (Real-time Stream)
+**Tujuan:** Mengolah data aliran secara instan untuk peringatan dini (Speed Layer) dan memproses agregasi historis skala besar (Batch Layer).
 
-- [ ] **[BRY]** Bangun skrip `streaming/spark_streaming.py`:
-  - Konsumsi data dari Kafka Topic `hotspot-stream` via Spark Structured Streaming.
-  - Terapkan _Watermarking_ dan _Sliding Window_ (misal window 10 menit, slide 2 menit).
-  - Filter titik api bahaya tinggi (`frp >= 20 MW` & `confidence = 'high'`).
-  - Broadcast Join di memori dengan `ref_grid_provinsi.csv` untuk penentuan provinsi otomatis.
-- [ ] **[MRZ]** Bangun sink penulisan stream ke **Apache HBase**:
-  - Tulis event titik api ke tabel `hotspot` dengan rowkey unik: `grid#tanggal_terbalik#jam#id`.
+#### A. Speed Layer (Real-time Stream Processing)
+
+- [ ] **Pengembangan Engine Streaming (`streaming/spark_streaming.py`):**
+  - Bangun consumer Spark Structured Streaming dari topic `hotspot-stream`.
+  - Terapkan mekanisme _Watermarking_ untuk menangani data yang datang terlambat (_late data_).
+  - Terapkan _Sliding Window_ agregasi (misal window 10 menit, slide 2 menit).
+- [ ] **Filter Anomali & Peringatan Dini:**
+  - Saring titik api berkategori bahaya ekstrem (`confidence = 'high'` dan `frp >= 20.0 MW`).
+  - Lakukan _in-memory Broadcast Join_ dengan tabel `ref_grid_provinsi.csv` untuk memetakan nama provinsi secara instan.
+- [ ] **Sink Penulisan Stream ke Storage Operasional:**
+  - Tulis event titik api terbaru ke **Apache HBase** (tabel `hotspot`) dengan pola rowkey: `grid#tanggal_terbalik#jam#id`.
 
 #### B. Batch Layer (Analitik Historis Skala Besar)
 
-- [ ] **[MRZ]** Bangun pipeline penulisan batch ke format **Apache Parquet**:
-  - Partisi berkas berdasarkan `acq_date` (`PARTITIONED BY (acq_date)`).
-  - Terapkan kompresi Snappy dan optimasi ukuran partisi.
-- [ ] **[MRZ]** Eksekusi kueri analitik berkala di **Spark SQL & Hive**:
-  - Agregasi risiko provinsi mingguan/bulanan.
-  - Perhitungan akumulasi energi FRP per tipe vegetasi/gambut.
-- [ ] **[MRZ]** Ambil screenshot terminal WSL: PySpark Streaming logs, HBase table put, dan output query Spark SQL.
+- [ ] **Pipeline Data Lake Parquet (`storage/build_parquet_lake.py`):**
+  - Tulis akumulasi data mentah ke format kolumnar **Apache Parquet**.
+  - Terapkan partisi berdasarkan tanggal (`PARTITIONED BY (acq_date)`).
+  - Terapkan kompresi Snappy untuk meminimalkan ukuran disk.
+- [ ] **Kueri Analitik Batch Terjadwal (Spark SQL & Apache Hive):**
+  - Jalankan kueri agregasi total dan rata-rata FRP per provinsi.
+  - Hitung matriks akumulasi energi panas pada kawasan lahan gambut.
+- [ ] **Dokumentasi Bukti Teknis:**
+  - Ambil screenshot terminal WSL: log eksekusi Spark Streaming, record yang masuk ke HBase, dan hasil kueri analitik Hive/Spark SQL.
+
+_Deliverable Fase 2:_ Pipeline streaming menyaring anomali secara real-time ke HBase dan data analitik tersimpan rapi di Parquet Data Lake.
 
 ---
 
-### Fase 3: Serving Layer — FastAPI Backend (Target: Hari 12–14)
+### Fase 3: Lapisan Serving — REST API Backend (FastAPI)
 
-- [ ] **[CLV]** Bangun layanan REST API di `serving/main.py` menggunakan FastAPI:
+**Tujuan:** Menyediakan antarmuka API performa tinggi yang menghubungkan lapisan penyimpanan data ke antarmuka visual pengguna.
+
+- [ ] **Inisialisasi Service FastAPI (`serving/main.py`):**
+  - Bangun arsitektur API modular dengan FastAPI dan Uvicorn.
+  - Konfigurasi middleware CORS agar dapat diakses oleh dashboard visual.
+- [ ] **Implementasi Endpoint Operasional & Analitik:**
   - `GET /api/v1/hotspots/recent`: Mengambil 50 titik api terbaru dari HBase (<1 detik).
-  - `GET /api/v1/alerts/critical`: Mengambil daftar titik api aktif berkategori bahaya ekstrem (FRP > 50 MW).
-  - `GET /api/v1/analytics/provinces`: Mengambil rekapitulasi data agregasi historis per provinsi.
-  - `GET /api/v1/health`: Cek status konektivitas Kafka, HBase, dan Spark.
-- [ ] **[CLV]** Uji endpoint via Swagger UI (`http://localhost:8000/docs`).
-- [ ] **[CLV]** Ambil screenshot antarmuka Swagger dan respon JSON endpoint.
+  - `GET /api/v1/alerts/critical`: Mengambil daftar titik api aktif berstatus darurat (_high confidence_ & FRP tinggi).
+  - `GET /api/v1/analytics/provinces`: Mengambil rangkuman agregasi jumlah titik api dan total FRP per provinsi.
+  - `GET /api/v1/analytics/trends`: Mengambil tren harian/mingguan intensitas kebakaran.
+  - `GET /api/v1/health`: Memeriksa status kesehatan koneksi HBase, Kafka, dan Spark.
+- [ ] **Pengujian & Validasi API:**
+  - Uji seluruh endpoint melalui antarmuka Swagger UI (`http://localhost:8000/docs`).
+  - Catat waktu respons endpoint (target: rata-rata respons <150 ms).
+  - Dokumentasikan screenshot antarmuka Swagger dan respon payload JSON.
+
+_Deliverable Fase 3:_ Layanan REST API aktif, teruji, dan menyediakan data siap saji untuk dashboard visual.
 
 ---
 
-### Fase 4: Visualization & Prescriptive Insight Layer (Target: Hari 15–18)
+### Fase 4: Lapisan Visualisasi & Wawasan Preskriptif — Streamlit & Folium GIS
 
-- [ ] **[SLM]** Bangun antarmuka dashboard di `dashboard/app.py` menggunakan Streamlit:
-  - **Peta Interaktif Folium GIS**:
-    - Heatmap intensitas radiasi panas FRP.
-    - Marker Clustering titik api yang dapat di-klik untuk detail satelit 375m.
-    - Layer poligon 239 sel grid dengan pewarnaan zona bahaya (Hijau, Kuning, Merah).
-  - **Live Alert Banner**: Notifikasi peringatan dini jika sel grid terdeteksi lonjakan titik api.
-  - **Grafik Analitik Plotly**: Tren temporal harian dan Top 10 Provinsi terdampak karhutla.
-- [ ] **[SLM]** Bangun **Modul Analisis Preskriptif (Kunci Nilai A 10%)**:
-  - Algoritma rekomendasi prioritas pemadaman berdasarkan indeks gabungan: _Kepadatan Titik Api_ + _FRP Puncak_ + _Luas Gambut_.
-  - Rekomendasi alokasi unit helikopter _water bombing_ BNPB dan regu Manggala Agni.
-- [ ] **[SLM]** Ambil screenshot dashboard beresolusi tinggi untuk lampiran laporan.
+**Tujuan:** Menyajikan dashboard geospasial interaktif serta wawasan preskriptif yang dapat dijadikan dasar pengambilan keputusan mitigasi karhutla.
+
+- [ ] **Pengembangan Dashboard GIS Interaktif (`dashboard/app.py`):**
+  - Integrasikan Streamlit dengan library pemetaan **Folium** / **Leaflet**.
+  - **Peta Spatio-Temporal Interaktif:**
+    - _Heatmap Layer_: Menampilkan visualisasi konsentrasi panas kebakaran hutan.
+    - _Marker Clustering Layer_: Pengelompokan titik api dinamis yang dapat di-_zoom_ hingga level resolusi satelit 375m.
+    - _Choropleth Grid Layer_: Pewarnaan 239 sel grid berdasarkan zona risiko (Hijau = Rendah, Kuning = Waspada, Merah = Bahaya Ekstrem).
+- [ ] **Panel Peringatan Dini Real-Time (Early Warning Ticker):**
+  - Buat komponen visual notifikasi peringatan seketika saat terdeteksi lonjakan api ekstrem di wilayah sensitif.
+- [ ] **Grafik Analitik & Metrik Kunci (Plotly):**
+  - Diagram batang Top 10 Provinsi terdampak karhutla terparah.
+  - Grafik garis tren radiasi termal (FRP) harian.
+- [ ] **Modul Analisis Preskriptif (Kunci Nilai A):**
+  - Implementasikan algoritma perankingan sel prioritas penanganan berdasarkan formula gabungan: _Kepadatan Titik Api_ + _FRP Puncak_ + _Luas Lahan Gambut_.
+  - Sajikan rekomendasi alokasi unit helikopter _water bombing_ BNPB dan regu pemadam darat Manggala Agni.
+- [ ] **Dokumentasi Tampilan Visual:**
+  - Ambil tangkapan layar antarmuka dashboard beresolusi tinggi untuk laporan dan presentasi.
+
+_Deliverable Fase 4:_ Dashboard interaktif berbasis web berjalan sempurna dengan peta GIS real-time dan modul rekomendasi tindakan mitigasi.
 
 ---
 
-### Fase 5: Pengujian End-to-End & Benchmarking (Target: Hari 19–21)
+### Fase 5: Pengujian End-to-End, Latensi, & Benchmarking
 
-- [ ] **[TIM]** Jalankan skenario simulasi end-to-end:
-  - `Feed Satelit` -> `Kafka (Ingest)` -> `Spark Streaming` -> `HBase/Parquet` -> `FastAPI` -> `Streamlit Dashboard`.
-- [ ] **[CLV & BRY]** Ukur latensi end-to-end: dari data masuk ke Kafka hingga muncul di peta dashboard (<3 detik).
-- [ ] **[MRZ]** Ukur throughput batch vs streaming pada skala 10k, 100k, dan 1 juta baris.
-- [ ] **[TIM]** Pastikan tidak ada _error fatal_, _memory leak_, atau kegagalan _OutOfMemory_ (OOM).
+**Tujuan:** Memvalidasi keandalan, stabilitas, dan performa arsitektur secara keseluruhan dari hulu ke hilir.
+
+- [ ] **Simulasi Aliran End-to-End:**
+  - Uji alur lengkap: `Data Satelit` ➔ `Kafka Topic` ➔ `Spark Streaming` ➔ `HBase & Parquet` ➔ `FastAPI` ➔ `Streamlit UI`.
+- [ ] **Pengukuran Latensi End-to-End:**
+  - Ukur jeda waktu dari saat titik api dipancarkan di Kafka hingga muncul di peta dashboard (target: <3 detik).
+- [ ] **Pengujian Skalabilitas Volume Data:**
+  - Uji performa pemrosesan batch pada variasi skala data: `10.000` baris, `100.000` baris, dan `1.000.000` baris.
+  - Catat konsumsi memori RAM dan utilisasi vCPU.
+- [ ] **Audit Kestabilan Sistem:**
+  - Pastikan tidak ada kegagalan _OutOfMemory_ (OOM), _data loss_, atau kebocoran koneksi.
+
+_Deliverable Fase 5:_ Data hasil pengukuran performa, tabel komparasi latensi, dan jaminan sistem berjalan bebas error fatal.
 
 ---
 
-### Fase 6: Penyusunan Laporan, Slide PPT, & Video (Target: Hari 22–25)
+### Fase 6: Penyusunan Laporan Akhir, PPT, Video, & Pengumpulan
 
-- [ ] **[MRZ & SLM]** Tulis Laporan Akhir (PDF) format 5 Bab sesuai panduan:
-  - Abstrak
-  - Bab 1: Pendahuluan (Latar Belakang Karhutla, Rumusan Masalah, Tujuan)
-  - Bab 2: Tinjauan Pustaka & Justifikasi 4V Big Data
-  - Bab 3: Metodologi & Diagram Arsitektur Solusi
-  - Bab 4: Implementasi Teknis, Cuplikan Kode, Screenshot Sistem, & Pembahasan Wawasan
-  - Bab 5: Kesimpulan & Saran
-  - Daftar Pustaka
-- [ ] **[SLM]** Susun slide presentasi (PPT) profesional:
-  - Ringkasan masalah, diagram arsitektur, demo cuplikan sistem, insight preskriptif.
-- [ ] **[TIM]** Rekam video presentasi dan demo aplikasi end-to-end (durasi 10–15 menit).
-- [ ] **[SLM]** Unggah video ke YouTube dan cantumkan tautan pada slide terakhir PPT.
-- [ ] **[SLM]** Kompilasi file Laporan PDF dan PPT ke dalam berkas arsip `.zip` / `.rar` dan unggah ke EMAS3 sebelum batas akhir.
+**Tujuan:** Mendokumentasikan seluruh hasil karya ilmiah dan teknis sesuai dengan sistematika resmi panduan EMAS3.
+
+- [ ] **Penyusunan Laporan Akhir Format PDF (Struktur 5 Bab Standar):**
+  - **Halaman Judul & Identitas Kelompok**
+  - **Abstrak** (Bahasa Indonesia & Bahasa Inggris)
+  - **Bab 1: Pendahuluan** (Latar Belakang Karhutla, Rumusan Masalah, Tujuan)
+  - **Bab 2: Tinjauan Pustaka & Justifikasi Big Data** (Teori 4V, Kegagalan RDBMS, Tech Stack)
+  - **Bab 3: Metodologi & Perancangan Sistem** (Diagram Arsitektur Lambda, Skema Data, Pipeline)
+  - **Bab 4: Implementasi & Pembahasan Hasil** (Snippets kode inti, screenshot sistem berjalan, analisis performa, wawasan preskriptif)
+  - **Bab 5: Kesimpulan & Saran**
+  - **Daftar Pustaka**
+- [ ] **Penyusunan Slide Presentasi (PPT):**
+  - Slide profesional yang memuat: Latar belakang masalah, arsitektur solusi, demo cuplikan sistem, grafik performa, dan kesimpulan.
+- [ ] **Perekaman Video Pemaparan (YouTube):**
+  - Rekam presentasi tim dan demonstrasi aplikasi end-to-end (durasi 10–15 menit).
+  - Unggah video ke YouTube dan sematkan tautan video pada slide terakhir PPT.
+- [ ] **Pengemasan & Pengumpulan Berkas:**
+  - Satukan berkas Laporan PDF dan slide PPT ke dalam satu file arsip (`.zip` atau `.rar`).
+  - Unggah berkas arsip ke portal EMAS3 sebelum batas akhir pengumpulan.
+
+_Deliverable Fase 6:_ Berkas PDF laporan final, slide PPT dengan tautan YouTube, dan arsip siap kumpul yang memenuhi 100% rubrik penilaian.

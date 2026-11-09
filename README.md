@@ -246,8 +246,7 @@ Untuk memenuhi rubrik nilai tertinggi (**Visualisasi Interaktif & Analisis Presk
 
 ---
 
-## Tautan & Dokumen Terkait
-
-- **[Proposal Rancangan Lengkap](PROPOSAL_RANCANGAN_TUGAS_AKHIR.md)** — Dokumen perancangan rinci, justifikasi teknis, dan skema data.
-- **[To-Do List & Action Plan Tim](TODO.md)** — Pelacak progres tugas 7 fase untuk seluruh anggota kelompok.
-- **[Panduan Tugas Akhir Resmi](document%20emas/12%20-%20Panduan%20Tugas%20Akhir.pdf)** — Kerangka acuan dan rubrik penilaian mata kuliah.
+## 🔗 Tautan & Dokumen Terkait
+* 📄 **[Proposal Rancangan Lengkap](document/PROPOSAL_RANCANGAN_TUGAS_AKHIR.md)** — Dokumen perancangan rinci, justifikasi teknis, dan skema data.
+* 📋 **[To-Do List & Action Plan Per Fase](document/TODO.md)** — Pelacak progres tugas 7 fase terstruktur.
+* 📜 **[Panduan Tugas Akhir Resmi](document/12%20-%20Panduan%20Tugas%20Akhir.pdf)** — Kerangka acuan dan rubrik penilaian mata kuliah.

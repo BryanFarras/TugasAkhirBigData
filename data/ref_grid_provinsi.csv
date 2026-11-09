@@ -1,0 +1,240 @@
+grid_id,provinsi,pulau,tingkat_rawan,luas_gambut_ha
+g079120,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g079123,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g079124,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g080117,Nusa Tenggara Barat,Bali & Nusa Tenggara,TINGGI,2500
+g080119,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g080120,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g080123,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g080124,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g080125,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g080130,Papua Barat,Papua,TINGGI,42000
+g080140,Papua Selatan,Papua,SANGAT_TINGGI,88000
+g081111,Jawa Timur,Jawa,TINGGI,5200
+g081112,Jawa Timur,Jawa,TINGGI,5200
+g081113,Jawa Timur,Jawa,TINGGI,5200
+g081114,Jawa Timur,Jawa,TINGGI,5200
+g081116,Nusa Tenggara Barat,Bali & Nusa Tenggara,TINGGI,2500
+g081117,Nusa Tenggara Barat,Bali & Nusa Tenggara,TINGGI,2500
+g081118,Nusa Tenggara Barat,Bali & Nusa Tenggara,TINGGI,2500
+g081120,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g081121,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g081122,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g081123,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g081124,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g081125,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g081126,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g081127,Nusa Tenggara Timur,Bali & Nusa Tenggara,TINGGI,3100
+g081131,Maluku,Kepulauan Maluku,TINGGI,16800
+g081137,Papua Selatan,Papua,SANGAT_TINGGI,88000
+g081138,Papua Selatan,Papua,SANGAT_TINGGI,88000
+g081139,Papua Selatan,Papua,SANGAT_TINGGI,88000
+g081140,Papua Selatan,Papua,SANGAT_TINGGI,88000
+g082106,Jawa Barat,Jawa,SEDANG,4500
+g082107,Jawa Barat,Jawa,SEDANG,4500
+g082108,Jawa Barat,Jawa,SEDANG,4500
+g082109,Jawa Tengah,Jawa,SEDANG,3800
+g082110,Jawa Tengah,Jawa,SEDANG,3800
+g082111,Jawa Timur,Jawa,TINGGI,5200
+g082112,Jawa Timur,Jawa,TINGGI,5200
+g082113,Jawa Timur,Jawa,TINGGI,5200
+g082114,Jawa Timur,Jawa,TINGGI,5200
+g082120,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g082121,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g082129,Maluku,Kepulauan Maluku,TINGGI,16800
+g082130,Maluku,Kepulauan Maluku,TINGGI,16800
+g082131,Maluku,Kepulauan Maluku,TINGGI,16800
+g082137,Papua Selatan,Papua,SANGAT_TINGGI,88000
+g082138,Papua Selatan,Papua,SANGAT_TINGGI,88000
+g082139,Papua Selatan,Papua,SANGAT_TINGGI,88000
+g082140,Papua Selatan,Papua,SANGAT_TINGGI,88000
+g083105,Jawa Barat,Jawa,SEDANG,4500
+g083106,Jawa Barat,Jawa,SEDANG,4500
+g083107,Jawa Barat,Jawa,SEDANG,4500
+g083108,Jawa Barat,Jawa,SEDANG,4500
+g083109,Jawa Tengah,Jawa,SEDANG,3800
+g083110,Jawa Tengah,Jawa,SEDANG,3800
+g083111,Jawa Timur,Jawa,TINGGI,5200
+g083112,Jawa Timur,Jawa,TINGGI,5200
+g083113,Jawa Timur,Jawa,TINGGI,5200
+g083115,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g083120,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g083134,Papua Barat,Papua,TINGGI,42000
+g083138,Papua Selatan,Papua,SANGAT_TINGGI,88000
+g083139,Papua Selatan,Papua,SANGAT_TINGGI,88000
+g083140,Papua Selatan,Papua,SANGAT_TINGGI,88000
+g084104,Lampung,Sumatera,TINGGI,22000
+g084105,Lampung,Sumatera,TINGGI,22000
+g084119,Sulawesi Selatan,Sulawesi,SEDANG,14200
+g084121,Sulawesi Tenggara,Sulawesi,TINGGI,21000
+g084122,Sulawesi Tenggara,Sulawesi,TINGGI,21000
+g084123,Sulawesi Tenggara,Sulawesi,TINGGI,21000
+g084132,Papua Barat,Papua,TINGGI,42000
+g084133,Papua Barat,Papua,TINGGI,42000
+g084134,Papua Barat,Papua,TINGGI,42000
+g084139,Papua Selatan,Papua,SANGAT_TINGGI,88000
+g085103,Lampung,Sumatera,TINGGI,22000
+g085104,Lampung,Sumatera,TINGGI,22000
+g085105,Lampung,Sumatera,TINGGI,22000
+g085114,Kalimantan Selatan,Kalimantan,SANGAT_TINGGI,54000
+g085116,Kalimantan Selatan,Kalimantan,SANGAT_TINGGI,54000
+g085119,Sulawesi Selatan,Sulawesi,SEDANG,14200
+g085120,Sulawesi Selatan,Sulawesi,SEDANG,14200
+g085121,Sulawesi Tenggara,Sulawesi,TINGGI,21000
+g085122,Sulawesi Tenggara,Sulawesi,TINGGI,21000
+g085123,Sulawesi Tenggara,Sulawesi,TINGGI,21000
+g085136,Papua Tengah,Papua,SEDANG,36000
+g085137,Papua Tengah,Papua,SEDANG,36000
+g085138,Papua Tengah,Papua,SEDANG,36000
+g085139,Papua Tengah,Papua,SEDANG,36000
+g086102,Sumatera Selatan,Sumatera,SANGAT_TINGGI,84000
+g086103,Sumatera Selatan,Sumatera,SANGAT_TINGGI,84000
+g086104,Sumatera Selatan,Sumatera,SANGAT_TINGGI,84000
+g086105,Sumatera Selatan,Sumatera,SANGAT_TINGGI,84000
+g086106,Kepulauan Bangka Belitung,Sumatera,TINGGI,31000
+g086107,Kepulauan Bangka Belitung,Sumatera,TINGGI,31000
+g086108,Kepulauan Bangka Belitung,Sumatera,TINGGI,31000
+g086110,Kalimantan Barat,Kalimantan,SANGAT_TINGGI,78000
+g086111,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g086112,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g086113,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g086114,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g086115,Kalimantan Selatan,Kalimantan,SANGAT_TINGGI,54000
+g086116,Kalimantan Selatan,Kalimantan,SANGAT_TINGGI,54000
+g086119,Sulawesi Selatan,Sulawesi,SEDANG,14200
+g086120,Sulawesi Selatan,Sulawesi,SEDANG,14200
+g086121,Sulawesi Tenggara,Sulawesi,TINGGI,21000
+g086122,Sulawesi Tenggara,Sulawesi,TINGGI,21000
+g086126,Maluku,Kepulauan Maluku,TINGGI,16800
+g086127,Maluku,Kepulauan Maluku,TINGGI,16800
+g086128,Maluku,Kepulauan Maluku,TINGGI,16800
+g086129,Maluku,Kepulauan Maluku,TINGGI,16800
+g086130,Maluku,Kepulauan Maluku,TINGGI,16800
+g086132,Papua Barat,Papua,TINGGI,42000
+g086133,Papua Barat,Papua,TINGGI,42000
+g086134,Papua Barat,Papua,TINGGI,42000
+g086135,Papua Tengah,Papua,SEDANG,36000
+g086137,Papua Tengah,Papua,SEDANG,36000
+g086138,Papua Tengah,Papua,SEDANG,36000
+g087100,Sumatera Barat,Sumatera,SEDANG,14000
+g087102,Sumatera Selatan,Sumatera,SANGAT_TINGGI,84000
+g087103,Sumatera Selatan,Sumatera,SANGAT_TINGGI,84000
+g087104,Sumatera Selatan,Sumatera,SANGAT_TINGGI,84000
+g087105,Sumatera Selatan,Sumatera,SANGAT_TINGGI,84000
+g087106,Kepulauan Bangka Belitung,Sumatera,TINGGI,31000
+g087107,Kepulauan Bangka Belitung,Sumatera,TINGGI,31000
+g087108,Kepulauan Bangka Belitung,Sumatera,TINGGI,31000
+g087110,Kalimantan Barat,Kalimantan,SANGAT_TINGGI,78000
+g087111,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g087112,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g087113,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g087114,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g087115,Kalimantan Selatan,Kalimantan,SANGAT_TINGGI,54000
+g087116,Kalimantan Timur,Kalimantan,TINGGI,46000
+g087119,Sulawesi Tengah,Sulawesi,TINGGI,19500
+g087120,Sulawesi Tengah,Sulawesi,TINGGI,19500
+g087121,Sulawesi Tenggara,Sulawesi,TINGGI,21000
+g087122,Sulawesi Tenggara,Sulawesi,TINGGI,21000
+g087128,Maluku,Kepulauan Maluku,TINGGI,16800
+g087129,Maluku,Kepulauan Maluku,TINGGI,16800
+g087132,Papua Barat,Papua,TINGGI,42000
+g087133,Papua Barat,Papua,TINGGI,42000
+g087139,Papua,Papua,SEDANG,39000
+g087140,Papua,Papua,SEDANG,39000
+g088102,Jambi,Sumatera,SANGAT_TINGGI,68000
+g088103,Jambi,Sumatera,SANGAT_TINGGI,68000
+g088104,Kepulauan Bangka Belitung,Sumatera,TINGGI,31000
+g088105,Kepulauan Bangka Belitung,Sumatera,TINGGI,31000
+g088106,Kepulauan Bangka Belitung,Sumatera,TINGGI,31000
+g088108,Kepulauan Bangka Belitung,Sumatera,TINGGI,31000
+g088109,Kalimantan Barat,Kalimantan,SANGAT_TINGGI,78000
+g088110,Kalimantan Barat,Kalimantan,SANGAT_TINGGI,78000
+g088111,Kalimantan Barat,Kalimantan,SANGAT_TINGGI,78000
+g088112,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g088113,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g088114,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g088115,Kalimantan Timur,Kalimantan,TINGGI,46000
+g088116,Kalimantan Timur,Kalimantan,TINGGI,46000
+g088117,Kalimantan Timur,Kalimantan,TINGGI,46000
+g088119,Sulawesi Tengah,Sulawesi,TINGGI,19500
+g088120,Sulawesi Tengah,Sulawesi,TINGGI,19500
+g088121,Sulawesi Tengah,Sulawesi,TINGGI,19500
+g088122,Sulawesi Tengah,Sulawesi,TINGGI,19500
+g088123,Sulawesi Tengah,Sulawesi,TINGGI,19500
+g088124,Sulawesi Tengah,Sulawesi,TINGGI,19500
+g088125,Sulawesi Tengah,Sulawesi,TINGGI,19500
+g088127,Maluku Utara,Kepulauan Maluku,SEDANG,11500
+g088129,Maluku Utara,Kepulauan Maluku,SEDANG,11500
+g088130,Maluku Utara,Kepulauan Maluku,SEDANG,11500
+g088132,Papua Barat,Papua,TINGGI,42000
+g088133,Papua Barat,Papua,TINGGI,42000
+g088135,Papua,Papua,SEDANG,39000
+g088136,Papua,Papua,SEDANG,39000
+g089102,Riau,Sumatera,SANGAT_TINGGI,92000
+g089103,Jambi,Sumatera,SANGAT_TINGGI,68000
+g089104,Riau,Sumatera,SANGAT_TINGGI,92000
+g089109,Kalimantan Barat,Kalimantan,SANGAT_TINGGI,78000
+g089110,Kalimantan Barat,Kalimantan,SANGAT_TINGGI,78000
+g089111,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g089112,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g089113,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g089114,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g089115,Kalimantan Timur,Kalimantan,TINGGI,46000
+g089116,Kalimantan Timur,Kalimantan,TINGGI,46000
+g089117,Kalimantan Timur,Kalimantan,TINGGI,46000
+g089121,Sulawesi Tengah,Sulawesi,TINGGI,19500
+g089122,Sulawesi Tengah,Sulawesi,TINGGI,19500
+g089123,Sulawesi Tengah,Sulawesi,TINGGI,19500
+g089127,Maluku Utara,Kepulauan Maluku,SEDANG,11500
+g089128,Maluku Utara,Kepulauan Maluku,SEDANG,11500
+g089129,Maluku Utara,Kepulauan Maluku,SEDANG,11500
+g089130,Maluku Utara,Kepulauan Maluku,SEDANG,11500
+g089131,Papua Barat,Papua,TINGGI,42000
+g089133,Papua Barat,Papua,TINGGI,42000
+g089134,Papua Barat,Papua,TINGGI,42000
+g090104,Riau,Sumatera,SANGAT_TINGGI,92000
+g090109,Kalimantan Barat,Kalimantan,SANGAT_TINGGI,78000
+g090110,Kalimantan Barat,Kalimantan,SANGAT_TINGGI,78000
+g090111,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g090112,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g090114,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g090115,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g090116,Kalimantan Timur,Kalimantan,TINGGI,46000
+g090117,Kalimantan Timur,Kalimantan,TINGGI,46000
+g090119,Sulawesi Tengah,Sulawesi,TINGGI,19500
+g090120,Gorontalo,Sulawesi,SEDANG,7400
+g090121,Gorontalo,Sulawesi,SEDANG,7400
+g090122,Gorontalo,Sulawesi,SEDANG,7400
+g090123,Sulawesi Utara,Sulawesi,SEDANG,6200
+g090124,Sulawesi Utara,Sulawesi,SEDANG,6200
+g090127,Maluku Utara,Kepulauan Maluku,SEDANG,11500
+g090128,Maluku Utara,Kepulauan Maluku,SEDANG,11500
+g091103,Riau,Sumatera,SANGAT_TINGGI,92000
+g091111,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g091113,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g091116,Kalimantan Timur,Kalimantan,TINGGI,46000
+g091117,Kalimantan Timur,Kalimantan,TINGGI,46000
+g091118,Kalimantan Timur,Kalimantan,TINGGI,46000
+g091121,Gorontalo,Sulawesi,SEDANG,7400
+g091124,Sulawesi Utara,Sulawesi,SEDANG,6200
+g091125,Sulawesi Utara,Sulawesi,SEDANG,6200
+g091127,Maluku Utara,Kepulauan Maluku,SEDANG,11500
+g091128,Maluku Utara,Kepulauan Maluku,SEDANG,11500
+g092100,Sumatera Utara,Sumatera,SEDANG,18500
+g092116,Kalimantan Timur,Kalimantan,TINGGI,46000
+g092117,Kalimantan Utara,Kalimantan,SEDANG,29000
+g092118,Kalimantan Utara,Kalimantan,SEDANG,29000
+g092125,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g092128,Maluku Utara,Kepulauan Maluku,SEDANG,11500
+g093101,Sumatera Utara,Sumatera,SEDANG,18500
+g093103,Sumatera Utara,Sumatera,SEDANG,18500
+g093107,Sumatera Utara,Sumatera,SEDANG,18500
+g093113,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g093116,Kalimantan Utara,Kalimantan,SEDANG,29000
+g094103,Aceh,Sumatera,SEDANG,24000
+g094114,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g094118,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g094126,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g095100,Aceh,Sumatera,SEDANG,24000
+g095116,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
+g095125,Kalimantan Tengah,Kalimantan,SANGAT_TINGGI,96000
