@@ -67,41 +67,7 @@ Mengapa kasus ini **TIDAK DAPAT** diselesaikan secara efisien menggunakan basis 
 
 ## Arsitektur Solusi (Lambda / Hybrid Architecture)
 
-```mermaid
-flowchart TD
-    subgraph S1["1. INGESTION LAYER"]
-        sat["NASA FIRMS VIIRS Feed<br/>(Telemetry Data Simulator)"]
-        kafka["Apache Kafka Message Broker<br/>Topic: 'hotspot-stream'<br/>(High-throughput In-flight Buffer)"]
-        sat -->|JSON / CSV Stream| kafka
-    end
-
-    subgraph S2["2. PROCESSING LAYER (HYBRID)"]
-        stream["Speed Layer: Spark Structured Streaming<br/>• Windowing & Extreme FRP Filter (>= 20 MW)<br/>• In-memory Broadcast Join 239 Sel Grid<br/>• Deteksi Dini Anomali Karhutla"]
-        batch["Batch Layer: Spark SQL & Apache Hive (Tez)<br/>• Agregasi Tren Bulanan & Tahunan<br/>• Matriks Risiko 34 Provinsi<br/>• Optimasi Partition Pruning Parquet"]
-        kafka -->|Micro-batch Stream| stream
-    end
-
-    subgraph S3["3. STORAGE LAYER (DUAL)"]
-        hbase["Operational Storage: Apache HBase 2.6.7<br/>Tabel: 'hotspot'<br/>Rowkey: grid#tgl-terbalik#jam#id<br/>(Random Get & Scan &lt; 1 Detik)"]
-        parquet["Analytical Storage: Apache Parquet / HDFS<br/>Tabel: 'hotspot_part'<br/>PARTITIONED BY (acq_date)<br/>(Kolumnar Snappy, Min/Max Metadata)"]
-        stream -->|Write Hotspot Baru| hbase
-        stream -->|Append Raw Stream| parquet
-        parquet -->|Read Columnar| batch
-    end
-
-    subgraph S4["4. SERVING LAYER"]
-        api["FastAPI REST Backend<br/>• /api/v1/hotspots/recent<br/>• /api/v1/alerts/critical<br/>• /api/v1/analytics/provinces"]
-        hbase -->|Lookup Cepat| api
-        batch -->|Aggregated Cache| api
-    end
-
-    subgraph S5["5. VISUALIZATION & PRESCRIPTIVE INSIGHT"]
-        dash["Streamlit Interactive GIS Dashboard<br/>• Peta Folium (Heatmap FRP & Marker Cluster 375m)<br/>• Live Alert Ticker (Notifikasi Karhutla Aktif)<br/>• Decision Support: Rekomendasi Alokasi Satgas Manggala Agni"]
-        api -->|JSON Payload| dash
-    end
-```
-
----
+## ![architecture](misc/Hybrid%20Architecture.svg)
 
 ## Tech Stack & Alat yang Digunakan
 
@@ -162,8 +128,6 @@ FinalProject/
     ├── Tugas_Akhir_Kelompok6.pptx       <- Slide presentasi (link YouTube pada slide akhir)
     └── shots/                           <- Screenshot bukti sistem berjalan
 ```
-
----
 
 ## Panduan Menjalankan Sistem (Step-by-Step)
 
@@ -247,6 +211,7 @@ Untuk memenuhi rubrik nilai tertinggi (**Visualisasi Interaktif & Analisis Presk
 ---
 
 ## 🔗 Tautan & Dokumen Terkait
-* 📄 **[Proposal Rancangan Lengkap](document/PROPOSAL_RANCANGAN_TUGAS_AKHIR.md)** — Dokumen perancangan rinci, justifikasi teknis, dan skema data.
-* 📋 **[To-Do List & Action Plan Per Fase](document/TODO.md)** — Pelacak progres tugas 7 fase terstruktur.
-* 📜 **[Panduan Tugas Akhir Resmi](document/12%20-%20Panduan%20Tugas%20Akhir.pdf)** — Kerangka acuan dan rubrik penilaian mata kuliah.
+
+- 📄 **[Proposal Rancangan Lengkap](document/PROPOSAL_RANCANGAN_TUGAS_AKHIR.md)** — Dokumen perancangan rinci, justifikasi teknis, dan skema data.
+- 📋 **[To-Do List & Action Plan Per Fase](document/TODO.md)** — Pelacak progres tugas 7 fase terstruktur.
+- 📜 **[Panduan Tugas Akhir Resmi](document/12%20-%20Panduan%20Tugas%20Akhir.pdf)** — Kerangka acuan dan rubrik penilaian mata kuliah.
